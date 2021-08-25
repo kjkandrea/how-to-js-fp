@@ -59,10 +59,10 @@ const f = (list, length) =>
 
 const f2 = (list, length) => go (
   list,
-  list => filter(a => a % 2)(list),
-  list => map(a => a * a)(list),
-  list => take(length)(list),
-  list => reduce(add)(list),
+  filter(a => a % 2),
+  map(a => a * a),
+  take(length),
+  reduce(add),
 )
 
 function main () {
