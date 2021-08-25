@@ -3,8 +3,8 @@
  */
 function f(list, length) {
   return list
-    .filter(int => int % 2)
-    .splice(0, length)
+    .filter(int => int % 2) // 얘를 지연평가 할 수는 없을까?
+    .splice(0, length) // 얘를 지연평가 할 수는 없을까?
     .map(int => Math.pow(int, 2))
     .reduce((acc, cur) => acc + cur)
 }
