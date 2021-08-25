@@ -32,6 +32,10 @@ function take(length, iter) {
 // 추산화 reduce 기능을 위임
 // 누산하라
 function reduce(f, acc, iter) {
+  if (arguments.length === 2) { // 난 이게 뭔지 모르겠어. 나중에 천천히 읽어보자
+    iter = acc[Symbol.iterator]();
+    acc = iter.next().value;
+  }
   for (const a of iter) {
     acc = f(acc, a)
   }
@@ -51,10 +55,18 @@ const f = (list, length) =>
       map(a => a * a,
         filter( a => a % 2, list))))
 
+const f2 = (list, length) => go (
+  list,
+  list => filter(a => a % 2, list),
+  list => map(a => a * a, list),
+  list => take(length, list),
+  list => reduce(add, 0, list),
+)
+
 function main () {
-  console.log(f([1,2,3,4,5], 1))
-  console.log(f([1,2,3,4,5], 2))
-  console.log(f([1,2,3,4,5], 3))
+  console.log(f2([1,2,3,4,5], 1))
+  console.log(f2([1,2,3,4,5], 2))
+  console.log(f2([1,2,3,4,5], 3))
 }
 
 export default main;
