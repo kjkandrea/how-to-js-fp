@@ -38,9 +38,11 @@ function reduce(f, acc, iter) {
   return acc
 }
 
+const add = (a, b) => a + b;
+
 const f = (list, length) =>
   reduce(
-    (acc, a) => acc + a,
+    add,
     0,
     take(length, map(a => a * a, filter( a => a % 2, list)))
   )
