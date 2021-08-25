@@ -41,11 +41,10 @@ function reduce(f, acc, iter) {
 const add = (a, b) => a + b;
 
 const f = (list, length) =>
-  reduce(
-    add,
-    0,
-    take(length, map(a => a * a, filter( a => a % 2, list)))
-  )
+  reduce(add, 0,
+    take(length,
+      map(a => a * a,
+        filter( a => a % 2, list))))
 
 function main () {
   console.log(f([1,2,3,4,5], 1))
