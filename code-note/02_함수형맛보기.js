@@ -40,6 +40,11 @@ function reduce(f, acc, iter) {
 
 const add = (a, b) => a + b;
 
+// 함수를 리스트로 사고하는 방식. 어렵다.. ㅠㅠ
+// go(10, a => a + 10)
+const go = (a, ...fs) => reduce((a, f) => f(a), a, fs);
+go(10, a => a + 1, console.log)
+
 const f = (list, length) =>
   reduce(add, 0,
     take(length,
