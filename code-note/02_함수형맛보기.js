@@ -9,6 +9,7 @@ const curry = f => (a, ...bs) =>
 // 홀수를 뽑아라
 const filter = curry(function *(f, iter) {
   for (const a of iter) {
+    console.log('filter:',a)
     if (f(a)) yield a;
   }
 });
@@ -17,6 +18,7 @@ const filter = curry(function *(f, iter) {
 // 제곱하여 맵핑하라
 const map = curry(function *(f, iter) {
   for (const a of iter) {
+    console.log('map:',a)
     yield f(a)
   }
 });
@@ -57,6 +59,8 @@ const f = (list, length) =>
       map(a => a * a,
         filter( a => a % 2, list))))
 
+// filter, map 이 제너레이터 이기때문에 지연평가(실제 실행이 되면 평가)
+// f2([1,2,3,4,5], 1) 을 보라. 단 한번 실행 됨
 const f2 = (list, length) => go (
   list,
   filter(a => a % 2),
@@ -67,8 +71,8 @@ const f2 = (list, length) => go (
 
 function main () {
   console.log(f2([1,2,3,4,5], 1))
-  console.log(f2([1,2,3,4,5], 2))
-  console.log(f2([1,2,3,4,5], 3))
+  // console.log(f2([1,2,3,4,5], 2))
+  // console.log(f2([1,2,3,4,5], 3))
 }
 
 export default main;
