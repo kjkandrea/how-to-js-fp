@@ -29,12 +29,21 @@ function take(length, iter) {
   return res;
 }
 
-function f(list, length) {
-  let acc = 0;
-  for (const a of take(length, map(a => a * a, filter( a => a % 2, list)))) {
-      acc = acc + a;
+// 추산화 reduce 기능을 위임
+// 누산하라
+function reduce(f, acc, iter) {
+  for (const a of iter) {
+    acc = f(acc, a)
   }
-  return acc;
+  return acc
+}
+
+function f(list, length) {
+  return reduce(
+    (acc, a) => acc + a,
+    0,
+    take(length, map(a => a * a, filter( a => a % 2, list)))
+  )
 }
 
 function main () {
