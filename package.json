@@ -1,0 +1,24 @@
+{
+  "name": "how-to-js-fp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kjkandrea/how-to-js-fp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kjkandrea/how-to-js-fp/issues"
+  },
+  "homepage": "https://github.com/kjkandrea/how-to-js-fp#readme"
+}
