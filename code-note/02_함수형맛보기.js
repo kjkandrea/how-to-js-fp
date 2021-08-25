@@ -38,13 +38,12 @@ function reduce(f, acc, iter) {
   return acc
 }
 
-function f(list, length) {
-  return reduce(
+const f = (list, length) =>
+  reduce(
     (acc, a) => acc + a,
     0,
     take(length, map(a => a * a, filter( a => a % 2, list)))
   )
-}
 
 function main () {
   console.log(f([1,2,3,4,5], 1))
