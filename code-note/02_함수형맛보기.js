@@ -42,10 +42,11 @@ function reduce(f, acc, iter) {
   return acc
 }
 
-// const curry f => (a, ...bs) =>
+const curry = f => (a, ...bs) =>
+  bs.length ? f(a, ...bs) : (...bs) => f(a, ...bs);
 
-
-const add = (a, b) => a + b;
+const add = curry((a, b) => a + b);
+console.log(add(10)(1))
 
 // 함수를 리스트로 사고하는 방식. 어렵다.. ㅠㅠ
 // go(10, a => a + 10)
