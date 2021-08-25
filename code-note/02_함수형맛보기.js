@@ -1,8 +1,20 @@
 /**
  * 리스트에서 홀수를 length 만큼 뽑아서 제곱한 후 모두 더하라
  */
+function *filter(f, list) { // 추상화. filter 기능을 위임
+  for (const a of list) {
+    if (f(a)) yield a;
+  }
+}
+
 function f(list, length) {
-  console.log('hi')
+  let i = 0;
+  let acc = 0;
+  for (const int of filter( int => int % 2, list)) {
+      acc = acc + int * int;
+      if (++i === length) break;
+  }
+  console.log(acc)
 }
 
 function main () {
