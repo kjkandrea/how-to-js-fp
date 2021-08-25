@@ -30,18 +30,17 @@ function take(length, iter) {
 }
 
 function f(list, length) {
-  let i = 0;
   let acc = 0;
   for (const a of take(length, map(a => a * a, filter( a => a % 2, list)))) {
       acc = acc + a;
   }
-  console.log(acc)
+  return acc;
 }
 
 function main () {
-  f([1,2,3,4,5], 1)
-  f([1,2,3,4,5], 2)
-  f([1,2,3,4,5], 3)
+  console.log(f([1,2,3,4,5], 1))
+  console.log(f([1,2,3,4,5], 2))
+  console.log(f([1,2,3,4,5], 3))
 }
 
 export default main;
