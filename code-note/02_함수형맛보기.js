@@ -5,9 +5,12 @@
 const curry = f => (a, ...bs) =>
   bs.length ? f(a, ...bs) : (...bs) => f(a, ...bs);
 
+// 지연 평가가 이루어지는 친구들 네임스페이스
+const L = {}
+
 // 추상화. filter 기능을 위임
 // 홀수를 뽑아라
-const filter = curry(function *(f, iter) {
+L.filter = curry(function *(f, iter) {
   for (const a of iter) {
     console.log('filter:',a)
     if (f(a)) yield a;
@@ -16,7 +19,7 @@ const filter = curry(function *(f, iter) {
 
 // 추상화. mapping 기능을 위임
 // 제곱하여 맵핑하라
-const map = curry(function *(f, iter) {
+L.map = curry(function *(f, iter) {
   for (const a of iter) {
     console.log('map:',a)
     yield f(a)
@@ -56,15 +59,15 @@ const go = (...as) => reduce((a, f) => f(a), as);
 const f = (list, length) =>
   reduce(add, 0,
     take(length,
-      map(a => a * a,
-        filter( a => a % 2, list))))
+      L.map(a => a * a,
+        L.filter( a => a % 2, list))))
 
 // filter, map 이 제너레이터 이기때문에 지연평가(실제 실행이 되면 평가)
 // f2([1,2,3,4,5], 1) 을 보라. 단 한번 실행 됨
 const f2 = (list, length) => go (
   list,
-  filter(a => a % 2),
-  map(a => a * a),
+  L.filter(a => a % 2),
+  L.map(a => a * a),
   take(length),
   reduce(add),
 )
