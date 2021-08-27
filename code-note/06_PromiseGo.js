@@ -17,6 +17,13 @@ function main() {
 
   // console.log(c) // Promise { <pending> }
   c.then(console.log) // 원하는 시점에 평가 가능
+
+  async function af() {
+    const a = await c;
+    console.log(a);
+  }
+
+  af() // 20002
 }
 
 export default main
