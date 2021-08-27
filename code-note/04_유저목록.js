@@ -1,3 +1,5 @@
+import L, { go } from './funtions.js'
+
 const users = [
   { name: 'a', age: 21, family: [
       { name : 'a1', age: 18 }, { name : 'a2', age: 19 },
@@ -11,3 +13,16 @@ const users = [
       { name : 'c3', age: 18 }, { name : 'c4', age: 17 },
     ]},
 ]
+
+function main() {
+  go(
+    users,
+    L.map(u => u.family),
+    L.flat,
+    _ => [..._],
+    console.log
+
+  )
+}
+
+export default main
