@@ -5,6 +5,7 @@ import 이차원배열 from './03_이차원배열.js'
 import 유저목록 from './04_유저목록.js'
 import 모나드 from './05_모나드.js'
 import Promise모나드 from './06_Promise모나드.js'
+import PromiseGo from './06_PromiseGo.js'
 
 const entries = [
 	명령형코드,
@@ -13,9 +14,10 @@ const entries = [
 	이차원배열,
   유저목록,
 	모나드,
-	Promise모나드
+	Promise모나드,
+	PromiseGo
 ]
 
 const run = chapter => entries[chapter]()
 
-run(6)
+run(7)
