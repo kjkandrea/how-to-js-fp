@@ -1,4 +1,4 @@
-import L, { go } from './funtions.js'
+import L, { go, take, reduce, add } from './funtions.js'
 
 const users = [
   { name: 'a', age: 21, family: [
@@ -19,7 +19,10 @@ function main() {
     users,
     L.map(u => u.family),
     L.flat,
-    _ => [..._],
+    L.filter(u => u.age < 20),
+    L.map(u => u.age),
+    take(2),
+    reduce(add),
     console.log
 
   )
