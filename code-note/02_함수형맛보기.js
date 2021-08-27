@@ -8,6 +8,20 @@ const curry = f => (a, ...bs) =>
 // 지연 평가가 이루어지는 친구들 네임스페이스
 const L = {}
 
+L.range = function *(stop) {
+  let i = -1;
+  while (++i < stop) yield i;
+}
+
+const infinity = L.range(Infinity); // 지연 평가 됨
+console.log(
+  infinity,
+  infinity.next(),
+  infinity.next(),
+  infinity.next(),
+  infinity.next(),
+)
+
 // 추상화. filter 기능을 위임
 // 홀수를 뽑아라
 L.filter = curry(function *(f, iter) {

@@ -10,4 +10,4 @@ const entries = [
 
 const run = chapter => entries[chapter]()
 
-run(2)
+run(1)
