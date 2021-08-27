@@ -10,13 +10,7 @@ const arr = [
 
 L.flat = function *(iter) {
   for (const a of iter) {
-     if (a && a[Symbol.iterator]) {
-       for (const b of a) {
-         yield b;
-       }
-     } else {
-       yield a;
-     }
+     a && a[Symbol.iterator] ? yield* a : yield a;
   }
 }
 
