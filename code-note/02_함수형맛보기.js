@@ -6,13 +6,13 @@ import L, { curry } from './funtions.js'
 
 
 const infinity = L.range(Infinity); // 지연 평가 됨
-console.log(
-  infinity,
-  infinity.next(),
-  infinity.next(),
-  infinity.next(),
-  infinity.next(),
-)
+// console.log(
+//   infinity,
+//   infinity.next(),
+//   infinity.next(),
+//   infinity.next(),
+//   infinity.next(),
+// )
 
 // 추상화 take 기능을 위임
 // length 만큼 take 하라

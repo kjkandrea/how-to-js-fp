@@ -1,4 +1,5 @@
 import L from './funtions.js'
+import { add, go, reduce, take } from './02_함수형맛보기.js'
 
 const arr = [
   [1, 2],
@@ -20,9 +21,16 @@ L.flat = function *(iter) {
 }
 
 function main() {
-  console.log(
-    ...L.flat(arr)
+  go (
+    arr,
+    L.flat,
+    L.filter(a => a % 2),
+    L.map(a => a * a),
+    take(3),
+    reduce(add),
+    console.log
   )
 }
+
 
 export default main;
