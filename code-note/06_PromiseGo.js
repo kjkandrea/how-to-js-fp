@@ -7,15 +7,16 @@ const delay = (time, a) => new Promise(resolve =>
   setTimeout(() => resolve(a), time))
 
 function main() {
-  console.log(
-  go(
+  const c = go(
     Promise.resolve(1), // 이 라인에 go 는 즉시 Promise 가 된다.
     a => a + 1,
     a => delay(100, a + 10000),
     a => delay(100, a + 10000),
-    console.log
-  ) // Promise { <pending> }
+    // console.log
   )
+
+  // console.log(c) // Promise { <pending> }
+  c.then(console.log) // 원하는 시점에 평가 가능
 }
 
 export default main
