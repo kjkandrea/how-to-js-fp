@@ -14,6 +14,8 @@ function main() {
   go(
     fg('{"k!@#$%^&*(: 10}').catch(_ => '미안...').then(console.log), // 미안...
   )
+
+  // Promise 는 비동기적인 상황, 성공, 실패를 다루기 위한 모나드이다.
 }
 
 export default main
