@@ -10,7 +10,16 @@ const fg = x => Promise.resolve(x)
 const delay = (time, a) => new Promise(resolve =>
   setTimeout(() => resolve(a), time))
 
-delay(100, 5).then(console.log)
+// delay(100, 5).then(console.log)
+
+let go1 = (a, f) => f(a);
+
+go1(123, console.log)
+go1(delay(1000, 456), console.log)
+
+go1 = (a, f) => a instanceof Promise ? a.then(f) : f(a); // Promise 의 존재 의의
+go1(delay(1000, 456), console.log)
+
 
 function main() {
   go(
