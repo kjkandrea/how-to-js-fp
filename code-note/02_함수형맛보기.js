@@ -26,7 +26,6 @@ console.log(
 // 홀수를 뽑아라
 L.filter = curry(function *(f, iter) {
   for (const a of iter) {
-    console.log('filter:',a)
     if (f(a)) yield a;
   }
 });
@@ -35,7 +34,6 @@ L.filter = curry(function *(f, iter) {
 // 제곱하여 맵핑하라
 L.map = curry(function *(f, iter) {
   for (const a of iter) {
-    console.log('map:',a)
     yield f(a)
   }
 });
@@ -87,9 +85,10 @@ const f2 = (list, length) => go (
 )
 
 function main () {
-  console.log(f2([1,2,3,4,5], 1))
+  //console.log(f2([1,2,3,4,5], 1))
   // console.log(f2([1,2,3,4,5], 2))
   // console.log(f2([1,2,3,4,5], 3))
+  console.log(f2(L.range(Infinity), 200))
 }
 
 export default main;
