@@ -13,6 +13,10 @@ function main() {
     f(g(1)),
     console.log
   )
+
+  go (
+    Promise.resolve(1).then(g).then(f).then(a => console.log(a))
+  )
 }
 
 export default main;
