@@ -1,13 +1,12 @@
-import { go } from './funtions.js'
+import L, { go } from './funtions.js'
 
 const g = a => a + 1;
 const f = a => a * a;
 
 function main() {
   go(
-    [1].map(g).map(f), // [] 는 모나드이다.
+    [1].map(g).map(f).forEach(a => console.log(a)), // [] 는 모나드이다.
     // [] 안에 있는 갯수가 여러개여도 합성을 안전하게한다.
-    console.log
   )
 
   go (
