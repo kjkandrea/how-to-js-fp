@@ -6,6 +6,7 @@ import 유저목록 from './04_유저목록.js'
 import 모나드 from './05_모나드.js'
 import Promise모나드 from './06_Promise모나드.js'
 import PromiseGo from './06_PromiseGo.js'
+import 결제누락스케쥴러 from './07_결제누락스케쥴러.js'
 
 const entries = [
 	명령형코드,
@@ -15,9 +16,10 @@ const entries = [
   유저목록,
 	모나드,
 	Promise모나드,
-	PromiseGo
+	PromiseGo,
+	결제누락스케쥴러
 ]
 
 const run = chapter => entries[chapter]()
 
-run(7)
+run(8)
