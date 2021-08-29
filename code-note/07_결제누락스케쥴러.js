@@ -1,4 +1,4 @@
-import L, { go } from './funtions.js'
+import L, { go, go1, takeWhile } from './funtions.js'
 
 const delay = (time, a) => new Promise(resolve =>
   setTimeout(() => resolve(a), time))
@@ -12,16 +12,16 @@ const Impt = {
     4: []
   },
   getPayments: page => {
-    console.log(`?page=${page}`);
+    // console.log(`?page=${page}`);
     return delay(100, Impt.payments[page])
   },
   cancelPayment: paymentId => Promise.resolve(`${paymentId} : 취소완료`)
 }
 
-function job() {
-  go(
-    L.range(Infinity),
+async function job() {
+  go(L.range(Infinity),
     L.map(Impt.getPayments),
+    takeWhile(ps => ps.length),
     console.log
   )
 }

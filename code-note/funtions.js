@@ -58,25 +58,25 @@ export const reduce = curry(function(f, acc, iter) {
 
 export const add = curry((a, b) => a + b);
 
-export const go = (...as) => reduce((a, f) => f(a), as);
-const go1 = (a, f) => a instanceof Promise ? a.then(f) : f(a);
+export const go1 = (a, f) => a instanceof Promise ? a.then(f) : f(a);
+export const go = (...as) => reduce(go1, as);
 
 export const takeWhile = curry(function(f, iter) {
   iter = iter[Symbol.iterator]();
   iter.return = null;
-  const res = [];
+  let res = [];
   return function recur() {
     for (const a of iter) {
       const b = go1(a, f);
       if (!b) return res;
       if (b instanceof Promise) return b.then(
         async b => b ? (res.push(await a), recur()) : res);
-      res.push(a)
+      res.push(a);
     }
     return res;
-  }()
+  } ();
 });
 
-takeWhile(a => a < 2, [Promise.resolve(1), Promise.resolve(2)]).then(console.log)
+// takeWhile(a => a < 2, [Promise.resolve(1), Promise.resolve(2)]).then(console.log)
 
 export default L;
