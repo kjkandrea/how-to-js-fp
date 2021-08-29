@@ -1,4 +1,4 @@
-import L, { go, go1, takeWhile } from './funtions.js'
+import L, { go, takeWhile, take } from './funtions.js'
 
 const delay = (time, a) => new Promise(resolve =>
   setTimeout(() => resolve(a), time))
@@ -19,11 +19,14 @@ const Impt = {
 }
 
 async function job() {
-  go(L.range(Infinity),
+  const payments = await go(L.range(Infinity),
     L.map(Impt.getPayments),
     takeWhile(ps => ps.length),
-    console.log
+    L.flat,
+    take(Infinity)
   )
+
+  console.log(payments)
 }
 
 export default job;
