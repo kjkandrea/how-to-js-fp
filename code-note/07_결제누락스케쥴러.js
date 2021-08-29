@@ -49,8 +49,10 @@ async function job() {
 }
 
 async function recur() {
-  await delay(1000 * 3)
-  job().then(console.log).then(recur)
+  Promise.all([
+    delay(1000 * 3),
+    job().then(console.log)
+  ]).then(recur)
 }
 
 export default recur;
