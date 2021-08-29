@@ -12,8 +12,8 @@ const Impt = {
     4: []
   },
   getPayments: page => {
-    // console.log(`?page=${page}`);
-    return delay(100, Impt.payments[page])
+    console.log(`?page=${page}`);
+    return delay(1000 * 2, Impt.payments[page])
   },
   cancelPayment: paymentId => Promise.resolve(`${paymentId} : 취소완료`)
 }
@@ -37,7 +37,7 @@ async function job() {
     take(Infinity),
   )
 
-  console.log(payments, orderIds)
+  // console.log(payments, orderIds)
 
   return Promise.all(go(
     payments,
