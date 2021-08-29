@@ -48,8 +48,9 @@ async function job() {
   ))
 }
 
-function main() {
-  job().then(console.log)
+async function recur() {
+  await delay(1000 * 3)
+  job().then(console.log).then(recur)
 }
 
-export default main;
+export default recur;
