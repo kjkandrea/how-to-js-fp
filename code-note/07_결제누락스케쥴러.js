@@ -18,6 +18,8 @@ const Impt = {
   cancelPayment: paymentId => Promise.resolve(`${paymentId} : 취소완료`)
 }
 
+const getOrders = ids => delay(100, [{ id: 1}, { id: 3 }, { id: 7 }],)
+
 async function job() {
   const payments = await go(L.range(Infinity),
     L.map(Impt.getPayments),
@@ -26,7 +28,28 @@ async function job() {
     take(Infinity)
   )
 
-  console.log(payments)
+  const orderIds = await go(
+    payments,
+    L.map(p => p.oid),
+    take(Infinity),
+    getOrders,
+    L.map(o => o.id),
+    take(Infinity),
+  )
+
+  console.log(payments, orderIds)
+
+  return Promise.all(go(
+    payments,
+    L.filter(p => !orderIds.includes(p.oid)),
+    L.map(i => i.iid),
+    take(Infinity),
+    L.map(Impt.cancelPayment),
+  ))
 }
 
-export default job;
+function main() {
+  job().then(console.log)
+}
+
+export default main;
